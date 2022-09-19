@@ -7,7 +7,10 @@ const Input = ({ input, setInput }) => {
       document.querySelector("button[value='DEL']")?.click();
       return;
     } else if (e.key === "Enter") {
-      setInput(eval(input));
+      let incorrect = Math.ceil(Math.random() * 100000);
+      let correct = eval(input);
+      let result = [incorrect, correct];
+      setInput(result[Math.floor(Math.random() * result.length)]);
       return;
     }
   };
@@ -22,7 +25,7 @@ const Input = ({ input, setInput }) => {
       onChange={handleInput}
       value={input}
       type="text"
-      className="flex-grow w-full p-5 mb-2 text-right border-2 border-gray-200 rounded-md text-2xl focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent"
+      className="flex-grow w-full p-5 mb-2 text-2xl text-right border-2 border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent"
       autoFocus={true}
     />
   );

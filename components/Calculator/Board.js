@@ -16,7 +16,10 @@ const Board = ({ input, setInput }) => {
       setInput(input.slice(0, -1));
       return;
     } else if (e.target.innerText === "=") {
-      setInput(eval(input));
+      let incorrect = Math.ceil(Math.random() * 100000);
+      let correct = eval(input);
+      let result = [incorrect, correct];
+      setInput(result[Math.floor(Math.random() * result.length)]);
       return;
     }
     setInput(input + e.target.innerText.replace(/[^0-9+\-%*/.]/g, ""));
@@ -52,7 +55,7 @@ const Board = ({ input, setInput }) => {
               <button
                 key={j}
                 onClick={shuffleBoard}
-                className="bg-gray-200 rounded-md p-2 md:p-4 sm:shrink-0 sm:p-0 sm:w-20 sm:h-10 sm:text-md md:w-20 md:h-20 font-bold text-2xl"
+                className="p-2 text-2xl font-bold bg-gray-200 rounded-md md:p-4 sm:shrink-0 sm:p-0 sm:w-20 sm:h-10 sm:text-md md:w-20 md:h-20"
               >
                 {col}
               </button>
